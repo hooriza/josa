@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>josa</title>
+	<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.20.0.css">
+</head>
+<body>
+	<div id="qunit"></div>
+	<script src="http://code.jquery.com/qunit/qunit-1.20.0.js"></script>
+	<script src="josa.js"></script>
+	<script>
+
+		test('이/가',  function() {
+			equal('수박'.josa('이'), '수박이');
+			equal('수박'.josa('가'), '수박이');
+			equal('사과'.josa('이'), '사과가');
+			equal('사과'.josa('가'), '사과가');
+		});
+
+		test('와/과',  function() {
+			equal('수박'.josa('와'), '수박과');
+			equal('수박'.josa('과'), '수박과');
+			equal('사과'.josa('와'), '사과와');
+			equal('사과'.josa('과'), '사과와');
+		});
+
+		test('을/를',  function() {
+			equal('수박'.josa('을'), '수박을');
+			equal('수박'.josa('를'), '수박을');
+			equal('사과'.josa('을'), '사과를');
+			equal('사과'.josa('를'), '사과를');
+		});
+
+		test('은/는',  function() {
+			equal('수박'.josa('은'), '수박은');
+			equal('수박'.josa('는'), '수박은');
+			equal('사과'.josa('은'), '사과는');
+			equal('사과'.josa('는'), '사과는');
+		});
+
+		test('으로/로',  function() {
+			equal('수박'.josa('으로'), '수박으로');
+			equal('수박'.josa('로'), '수박으로');
+			equal('사과'.josa('으로'), '사과로');
+			equal('사과'.josa('로'), '사과로');
+			equal('귤'.josa('으로'), '귤로');
+			equal('귤'.josa('로'), '귤로');
+		});
+
+		test('이면/면',  function() {
+			equal('수박'.josa('이면'), '수박이면');
+			equal('수박'.josa('면'), '수박이면');
+			equal('사과'.josa('이면'), '사과면');
+			equal('사과'.josa('면'), '사과면');
+		});
+
+		test('이다/다',  function() {
+			equal('수박'.josa('이다'), '수박이다');
+			equal('수박'.josa('다'), '수박이다');
+			equal('사과'.josa('이다'), '사과다');
+			equal('사과'.josa('다'), '사과다');
+		});
+
+		test('이지/지',  function() {
+			equal('수박'.josa('이지'), '수박이지');
+			equal('수박'.josa('지'), '수박이지');
+			equal('사과'.josa('이지'), '사과지');
+			equal('사과'.josa('지'), '사과지');
+		});
+
+		test('이네/네',  function() {
+			equal('수박'.josa('이네'), '수박이네');
+			equal('수박'.josa('네'), '수박이네');
+			equal('사과'.josa('이네'), '사과네');
+			equal('사과'.josa('네'), '사과네');
+		});
+
+		test('이고/고',  function() {
+			equal('수박'.josa('이고'), '수박이고');
+			equal('수박'.josa('고'), '수박이고');
+			equal('사과'.josa('이고'), '사과고');
+			equal('사과'.josa('고'), '사과고');
+		});
+
+		test('영향을 받지 않는 글자', function() {
+			equal('안녕'.josa('하세요'), '안녕하세요');
+			equal('수박'.josa('인지'), '수박인지');
+			equal('사과'.josa('인지'), '사과인지');
+		});
+
+		test('다른 글자와 섞어쓰기', function() {
+			equal('나'.josa('은 학생입니다'), '나는 학생입니다');
+			equal('당신'.josa('은 학생입니까'), '당신은 학생입니까');
+		});
+
+		test('변형', function() {
+			equal('수박'.josa('으로써'), '수박으로써');
+			equal('수박'.josa('로써'), '수박으로써');
+			equal('사과'.josa('으로써'), '사과로써');
+			equal('사과'.josa('로써'), '사과로써');
+			equal('귤'.josa('으로써'), '귤로써');
+			equal('귤'.josa('로써'), '귤로써');
+
+			equal('수박'.josa('이지만'), '수박이지만');
+			equal('수박'.josa('지만'), '수박이지만');
+			equal('사과'.josa('이지만'), '사과지만');
+			equal('사과'.josa('지만'), '사과지만');
+			equal('귤'.josa('이지만'), '귤이지만');
+			equal('귤'.josa('지만'), '귤이지만');
+		});
+
+		test('예문 테스트', function() {
+			equal(
+				'홍길동'.josa('와 ') + '홍길순'.josa('가 ') + '사과'.josa('을 ') + '한국'.josa('으로 ') + '옮겼습니다',
+				'홍길동과 홍길순이 사과를 한국으로 옮겼습니다',
+				'홍길동과 홍길순이 사과를 한국으로 옮겼습니다'
+			);
+			equal(
+				'하나'.josa('이면 ') + '하나'.josa('이지 ') + '셋'.josa('는 아니야'),
+				'하나면 하나지 셋은 아니야',
+				'하나면 하나지 셋은 아니야'
+			);
+		});
+		
+	</script>
+</body>
+</html>
