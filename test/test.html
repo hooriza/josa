@@ -8,7 +8,7 @@
 <body>
 	<div id="qunit"></div>
 	<script src="http://code.jquery.com/qunit/qunit-1.20.0.js"></script>
-	<script src="josa.js"></script>
+	<script src="../josa.js"></script>
 	<script>
 
 		test('이/가',  function() {
@@ -83,10 +83,15 @@
 			equal('사과'.josa('고'), '사과고');
 		});
 
-		test('영향을 받지 않는 글자', function() {
+		test('영향을 받지 않는 조사', function() {
 			equal('안녕'.josa('하세요'), '안녕하세요');
 			equal('수박'.josa('인지'), '수박인지');
 			equal('사과'.josa('인지'), '사과인지');
+		});
+
+		test('영향을 받지 않는 명사', function() {
+			equal('hello'.josa('이'), 'hello이');
+			equal('world'.josa('가'), 'world가');
 		});
 
 		test('다른 글자와 섞어쓰기', function() {

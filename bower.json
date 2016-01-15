@@ -1,0 +1,18 @@
+{
+  "name": "josa",
+  "main": "josa.js",
+  "homepage": "https://github.com/hooriza/josa",
+  "authors": [
+    "hooriza@gmail.com"
+  ],
+  "description": "종성 유무에 따른 적당한 한글 조사 간단히 붙히기",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,4 +1,4 @@
-String.prototype.josa = (function() {
+;String.prototype.josa = (function() {
 
 	var table = [
 		{ reg: /^이?([면다지네고])/, map : [ '이$1', '$1' ] },
@@ -14,7 +14,9 @@ String.prototype.josa = (function() {
 	return function(str) {
 
 		var code = this.charCodeAt(this.length - 1);
-		var jongSeong = 0xAC00 <= code && code <= 0xD743 ? (code - 0xAC00) % 28 : 0;
+		if (code < 0xAC00 || 0xD743 < code) { return this + str; }
+
+		var jongSeong = (code - 0xAC00) % 28;
 
 		for (var i = 0, item; !!(item = table[i]); i++) {
 			if (!item.reg.test(str)) { continue; }
