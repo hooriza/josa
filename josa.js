@@ -11,7 +11,20 @@
 		{ reg: /^은|는/, map : [ '은', '는' ] }
 	];
 
-	return function(str) {
+	function escapeRegExp(string){
+		return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	}
+
+	return function (str) {
+
+		if (arguments.length === 0 || arguments.length === 2) {
+			var open = escapeRegExp(arguments[0] || '{');
+			var close = escapeRegExp(arguments[1] || '}');
+			var regExp = new RegExp(open + '(.*?)' + close + '([^\\s]+)', 'g');
+			return this.replace(regExp, function(_, str, josa) {
+				return str.josa(josa);
+			});
+		}
 
 		var code = this.charCodeAt(this.length - 1);
 		if (code < 0xAC00 || 0xD743 < code) { return this + str; }
