@@ -16,5 +16,8 @@ bower install https://github.com/hooriza/josa.git
 ## 사용방법
 ```js
 console.log('아무개'.josa('이 ') + '숫가락'.josa('로 ') + '밥'.josa('를 먹었습니다'));
-// 결과 : 아무개가 숫가락으로 밥을 먹었습니다.
+// 결과 : 아무개가 숫가락으로 밥을 먹었습니다
+
+console.log('철수'.josa('은 ') + '귤'.josa('으로 ') + '샐러드'.josa('을 만들었습니다'));
+// 결과 : 철수는 귤로 샐러드를 만들었습니다
 ```
