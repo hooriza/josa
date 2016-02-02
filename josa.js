@@ -20,9 +20,13 @@
 		if (arguments.length === 0 || arguments.length === 2) {
 			var open = escapeRegExp(arguments[0] || '{');
 			var close = escapeRegExp(arguments[1] || '}');
-			var regExp = new RegExp(open + '(.*?)' + close + '([^\\s]+)', 'g');
+			var regExp = new RegExp('(.)' + open + '(.*?)' + close, 'g');
 			return this.replace(regExp, function(_, str, josa) {
-				return str.josa(josa);
+				var after = str.josa(josa);
+				if (str + josa !== after) {
+					return after;
+				}
+				return _;
 			});
 		}
 
