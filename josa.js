@@ -1,5 +1,7 @@
 ;String.prototype.josa = (function() {
 
+	'use strict';
+
 	var table = [
 		{ reg: /^이?([면다지네고])/, map : [ '이$1', '$1' ] },
 		{ reg: /^으?로/, map : [ '으로', '로' ], callback : function(jongSeong) {
